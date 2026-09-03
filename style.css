@@ -334,7 +334,7 @@ font-family: "Montserrat", sans-serif;
   .invitation-card {
     left: 9%;
     right: 9%;
-    transform: translateY(360px);
+    transform: translateY(400px);
     padding: 40px 24px 34px;
     min-height: 405px;
   }
@@ -522,7 +522,7 @@ font-family: "Montserrat", sans-serif;
     margin-bottom: 6px;
   }
   .envelope-stage {
-    height: 742px;
+    height: 900px;
   }
   .envelope {
     left: 1%;
@@ -532,7 +532,7 @@ font-family: "Montserrat", sans-serif;
   .invitation-card {
     left: 10.5%;
     right: 10.5%;
-    transform: translateY(360px);
+    transform: translateY(400px);
     min-height: 525px;
     padding: 35px 22px 42px;
   }
@@ -550,7 +550,7 @@ font-family: "Montserrat", sans-serif;
   .cover-flowers {
     width: 27%;
     left: 1%;
-    transform: translate(-10px, -520px);
+    transform: translate(-10px, -300px);
   }
 }
 @media (max-width: 360px) {
