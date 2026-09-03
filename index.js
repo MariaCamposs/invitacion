@@ -22,3 +22,23 @@ document.getElementById('rsvpButton')?.addEventListener('click', (event) => {
   event.preventDefault();
   alert('Reemplaza este botón por el enlace de tu formulario de confirmación (Google Forms, WhatsApp u otro).');
 });
+
+const revealElements = document.querySelectorAll(".reveal, .reveal-photo");
+
+const observer = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("active");
+        observer.unobserve(entry.target);
+      }
+    });
+  },
+  {
+    threshold: 0.15
+  }
+);
+
+revealElements.forEach((element) => {
+  observer.observe(element);
+});
