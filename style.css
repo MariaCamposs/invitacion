@@ -550,7 +550,7 @@ font-family: "Montserrat", sans-serif;
   .cover-flowers {
     width: 27%;
     left: 1%;
-    transform: translate(-10px, -300px);
+    transform: translate(-10px, -480px);
   }
 }
 @media (max-width: 360px) {
