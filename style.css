@@ -1,11 +1,21 @@
+@font-face {
+  font-family: "Ginger";
+  src: url("fonts/Ginger.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --navy: #00304e;
-  --ink: #252525;
+  --ink: #222222;
   --muted: #5e5d5a;
   --paper: #f7f4ee;
   --paper2: #fbfaf7;
   --line: #b8b0a4;
   --main-background: #faf9f6;
+  --countdown-color: #071425;
+  --countdown-background: #faf9f6;
 }
 * {
   box-sizing: border-box;
@@ -64,7 +74,6 @@ body {
   right: 10%;
   transform: translateY(360px);
   padding: 46px 34px 40px;
-  min-height: 430px;
   border: 1px solid #c9c1b6;
   box-shadow: 0 8px 20px #0002;
   overflow: hidden;
@@ -83,7 +92,7 @@ body {
 }
 .names span {
   display: block;
-  font-family: "Parisienne", cursive;
+  font-family: "Ginger", sans-serif;
   font-size: 31px;
   line-height: 1;
   margin: 7px 0;
@@ -109,7 +118,7 @@ body {
   gap: 3px;
 }
 .date-lockup span {
-  font-family: Montserrat, sans-serif;
+  font-family: "Marcellus", serif;
   font-size: 9px;
   letter-spacing: 0.13em;
 }
@@ -126,13 +135,11 @@ body {
 }
 .photo-full {
   margin: 0;
-  height: 690px;
   background: #ddd;
   overflow: hidden;
 }
 .photo-full img {
   width: 100%;
-  height: 100%;
   object-fit: cover;
 }
 .details {
@@ -166,41 +173,41 @@ body {
 .event-content h2,
 .script-title,
 .countdown-section h2 {
-  font-family: "Italianno", cursive;
-  font-size: 42px;
+  font-family: "Pinyon Script", cursive;
+  font-size: 25px;
   font-weight: 400;
   line-height: 1;
 }
 .event-content h2 {
-  font-size: 33px;
-  margin: 0 0 4px;
+  font-size: 25px;
+  margin: 0;
 }
 .event-time {
-  font-family: "Montserrat", sans-serif;
+  font-family: "Marcellus", serif;
   font-weight: 400;
-  font-size: 25px;
-  margin: 0 0 6px;
+  font-size: 16px;
+  margin: 0;
 }
 .event-place,
 .caps {
-  font-family: "Montserrat", sans-serif;
+  font-family: "Marcellus", serif;
   font-weight: 300;
   font-size: 17px;
-  letter-spacing: 0.01em;;
+  letter-spacing: 0.01em;
 }
 .event-place {
   font-size: 11px;
-  margin: 0 0 18px;
+  margin: 6px 0;
 }
 .button {
   display: inline-block;
-  padding: 10px 27px;
+  padding: 5px 15px;
   border-radius: 999px;
   background: var(--navy);
   color: white;
   text-decoration: none;
-  font-family: Montserrat, sans-serif;
-  font-size: 11px;
+  font-family: "Marcellus", serif;
+  font-size: 10px;
   letter-spacing: 0.08em;
 }
 .countdown-section {
@@ -212,34 +219,66 @@ body {
   color: var(--navy);
   font-size: 19px;
 }
-.countdown-section h2 {
-  font-size: 38px;
-  margin: 4px 0 13px;
-}
 .countdown {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 4px;
-}
-.countdown strong {
-  display: block;
-  font-size: 30px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  width: min(94vw, 700px);
+  color: var(--countdown-color);
+  font-family: "Italianno", cursive;
   font-weight: 400;
-  color: var(--navy);
+  font-style: normal;
+  font-variant-numeric: tabular-nums;
 }
-.countdown span {
+
+.countdown__item {
+  flex: 1 1 0;
+  min-width: 0;
+  text-align: center;
+}
+
+.countdown__number {
   display: block;
-  font-family: Montserrat, sans-serif;
-  font-size: 9px;
-  letter-spacing: 0.05em;
-  color: var(--muted);
+  font-size: clamp(3.25rem, 11vw, 6rem);
+  line-height: 0.76;
+  white-space: nowrap;
+}
+
+.countdown__label {
+  display: block;
+  margin-top: 0.55rem;
+  font-size: clamp(1.35rem, 4.5vw, 2.2rem);
+  line-height: 1;
+}
+
+.countdown__separator {
+  flex: 0 0 auto;
+  margin: -0.04em 0.03em 0;
+  font-size: clamp(3.25rem, 11vw, 6rem);
+  line-height: 0.76;
+}
+
+@media (max-width: 430px) {
+  .countdown {
+    width: 97vw;
+  }
+
+  .countdown__number,
+  .countdown__separator {
+    font-size: clamp(2.65rem, 15vw, 4rem);
+  }
+
+  .countdown__label {
+    margin-top: 0.45rem;
+    font-size: clamp(1rem, 5.5vw, 1.45rem);
+  }
 }
 .itinerary-section {
   padding: 34px 24px 46px;
   text-align: center;
 }
 .script-title {
-  font-size: 39px;
+  font-size: 25px;
   margin: 0 0 22px;
 }
 .itinerary-img {
@@ -249,19 +288,19 @@ body {
   display: block;
 }
 .dress-section {
-  padding: 18px 20px 38px;
+  padding: 18px 30px 38px;
 }
 .dress-panel,
 .rsvp-panel {
   background: url("images/card_2.png") center/cover no-repeat;
-  padding: 10px 60px;
   text-align: center;
   box-shadow:
-  0 2px 8px rgba(0, 0, 0, 0.10),
-  0 8px 18px rgba(0, 0, 0, 0.12);
+    0 2px 8px rgba(0, 0, 0, 0.1),
+    0 8px 18px rgba(0, 0, 0, 0.12);
+  padding: 20px 0;
 }
 .dress-panel .script-title {
-  margin-bottom: 3px;
+  margin-bottom: 16px;
 }
 .caps {
   font-size: 10px;
@@ -270,20 +309,20 @@ body {
 .dress-img {
   width: 100px;
   max-width: 80%;
-  margin: 14px auto 18px;
 }
 .dress-panel p,
 .gift-section p,
 .rsvp-panel p {
-font-family: "Montserrat", sans-serif;
+  font-family: "Marcellus", serif;
   font-weight: 300;
   font-size: 12px !important;
   line-height: 1.55;
   color: #575652;
+  padding: 0 20px;
 }
 .dress-panel h3 {
-  font-family: "Italianno", cursive;
-  font-size: 39px;
+  font-family: "Pinyon Script", cursive;
+  font-size: 25px;
   font-weight: 400;
   margin: 16px 0 6px;
 }
@@ -306,7 +345,7 @@ font-family: "Montserrat", sans-serif;
   min-width: 166px;
 }
 .rsvp-section {
-  padding: 34px 20px 42px;
+  padding: 34px 30px 42px;
 }
 .rsvp-panel .button {
   margin: 6px 0 22px;
@@ -316,13 +355,11 @@ font-family: "Montserrat", sans-serif;
   margin-top: 26px;
 }
 .thanks {
-  font-family: "Italiana", Georgia, serif !important;
-  color: var(--navy) !important;
+  font-family: "Ginger", sans-serif !important;
+  color: var(--ink) !important;
   font-size: 29px !important;
   margin: 8px 0 0 !important;
-}
-.last {
-  height: 690px;
+  font-weight: 500;
 }
 @media (max-width: 420px) {
   .intro {
@@ -336,7 +373,6 @@ font-family: "Montserrat", sans-serif;
     right: 9%;
     transform: translateY(400px);
     padding: 40px 24px 34px;
-    min-height: 405px;
   }
   .names {
     font-size: 36px;
@@ -346,18 +382,14 @@ font-family: "Montserrat", sans-serif;
     left: -11%;
     bottom: -8%;
   }
-  .photo-full,
-  .last {
-    height: 610px;
-  }
   .event-content h2 {
-    font-size: 29px;
+    font-size: 25px;
   }
   .event-time {
-    font-size: 20px;
+    font-size: 16px;
   }
   .script-title {
-    font-size: 36px;
+    font-size: 25px;
   }
 }
 @media (max-width: 360px) {
@@ -366,7 +398,6 @@ font-family: "Montserrat", sans-serif;
   }
   .invitation-card {
     padding-top: 31px;
-    min-height: 370px;
   }
   .intro-quote {
     font-size: 12px;
@@ -381,10 +412,6 @@ font-family: "Montserrat", sans-serif;
   }
   .date-day {
     font-size: 38px;
-  }
-  .photo-full,
-  .last {
-    height: 560px;
   }
 }
 /* portada Canva */
@@ -423,7 +450,6 @@ font-family: "Montserrat", sans-serif;
   left: 11%;
   right: 11%;
   transform: translateY(360px);
-  min-height: 540px;
   padding: 38px 26px 46px;
   border: 0;
   box-shadow: 0 6px 17px rgba(0, 0, 0, 0.17);
@@ -432,8 +458,8 @@ font-family: "Montserrat", sans-serif;
   text-align: center;
 }
 .intro-quote {
-  font-family: "Bellefair", serif;
-  font-weight: 400;
+  font-family: "Marcellus", serif;
+  font-weight: 500;
   font-size: 14px;
   line-height: 1.45;
   letter-spacing: 0.015em;
@@ -441,7 +467,7 @@ font-family: "Montserrat", sans-serif;
   color: #2b2a29;
 }
 .names {
-  font-family: "Italiana", Georgia, serif;
+  font-family: "Ginger", sans-serif;
   font-size: 45px;
   font-weight: 400;
   letter-spacing: 0.035em;
@@ -455,7 +481,7 @@ font-family: "Montserrat", sans-serif;
   justify-content: center;
   gap: 11px;
   margin: 12px 0 10px !important;
-  font-family: "Italiana", Georgia, serif !important;
+  font-family: "Ginger", sans-serif !important;
   font-size: 23px !important;
   line-height: 1 !important;
 }
@@ -469,8 +495,8 @@ font-family: "Montserrat", sans-serif;
   font-weight: 400;
 }
 .honor {
-  font-family: "Bellefair", serif;
-  font-weight: 400;
+  font-family: "Marcellus", serif;
+  font-weight: 500;
   font-size: 14px;
   line-height: 1.45;
   letter-spacing: 0.02em;
@@ -533,7 +559,6 @@ font-family: "Montserrat", sans-serif;
     left: 10.5%;
     right: 10.5%;
     transform: translateY(400px);
-    min-height: 525px;
     padding: 35px 22px 42px;
   }
   .intro-quote {
@@ -562,7 +587,6 @@ font-family: "Montserrat", sans-serif;
   }
   .invitation-card {
     transform: translateY(360px);
-    min-height: 500px;
     padding: 32px 20px 38px;
   }
   .intro-quote {
@@ -599,7 +623,7 @@ font-family: "Montserrat", sans-serif;
   gap: 28px;
 
   color: #1f1f1f;
-  font-family: "Bellefair", serif;
+  font-family: "Marcellus", serif;
   font-weight: 400;
 }
 
@@ -649,14 +673,13 @@ font-family: "Montserrat", sans-serif;
   line-height: 0.9;
 }
 
-
 /* MÓVIL */
 @media (max-width: 480px) {
   .wedding-date {
     max-width: 330px;
     gap: 20px;
-    font-family: "Bellefair", serif;
-  font-weight: 400;
+    font-family: "Marcellus", serif;
+    font-weight: 400;
   }
 
   .date-side {
@@ -682,7 +705,7 @@ font-family: "Montserrat", sans-serif;
 }
 
 .civil .event-content {
-transform: translate(35px, 20px);
+  transform: translate(35px, 20px);
 }
 
 .gift-panel {
@@ -690,8 +713,8 @@ transform: translate(35px, 20px);
   text-align: center;
   padding: 18px 20px 38px;
   box-shadow:
-  0 2px 8px rgba(0, 0, 0, 0.10),
-  0 8px 18px rgba(0, 0, 0, 0.12);
+    0 2px 8px rgba(0, 0, 0, 0.1),
+    0 8px 18px rgba(0, 0, 0, 0.12);
 }
 
 /* Estado inicial */
@@ -720,4 +743,13 @@ transform: translate(35px, 20px);
 .reveal-photo.active {
   opacity: 1;
   transform: scale(1);
+}
+
+.church {
+  width: 20%;
+}
+
+.cheers {
+  width: 15%;
+  margin-bottom: 10px;
 }
